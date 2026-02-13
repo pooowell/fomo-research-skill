@@ -176,7 +176,3 @@ Your payment wallet must:
 - Free tier quota (250 calls) resets daily at midnight UTC
 - All payment records are stored and available via `/v1/account/payments`
 - x402 setup is **immediate** - upgraded limits apply instantly
-
-## Alternative: Whop subscription
-
-If you prefer monthly billing over pay-per-request, consider the Whop subscription option at https://cope.capital for unlimited access.

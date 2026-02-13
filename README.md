@@ -1,6 +1,6 @@
 # Cope Capital API Skills
 
-Agent Skills package for the Cope Capital API - programmatic access to smart money wallet intelligence from 1,000+ tracked Fomo wallets across Solana and Base chains. Build custom watchlists, get real-time trading alerts, and access enriched token data to power your trading bots and analytics.
+Agent Skills package for the Cope Capital API — programmatic access to smart money intelligence from tracked wallets across Solana and Base chains. Build custom watchlists, poll real-time trading activity, and access wallet performance leaderboards.
 
 ## Installation
 
@@ -18,6 +18,7 @@ npx skills add cope-capital/cope-api-skills
 | **cope-leaderboard** | Get top performing wallets by PnL | Discover profitable traders |
 | **cope-fomo-sync** | Link Fomo profile and auto-track follows | Bulk import, streamlined setup |
 | **cope-x402-setup** | Enable USDC payments for unlimited access | Scale beyond free limits |
+| **cope-account** | Manage account settings and view usage stats | Account management, usage tracking |
 
 ## Quick Start
 
@@ -61,12 +62,11 @@ npx skills add cope-capital/cope-api-skills
 **Free Tier**: 250 API calls per day, 1 watchlist, 10 handles per watchlist
 
 **Upgrade Options**: 
-- x402 payments ($0.005/call USDC on Base/Solana) 
-- Whop subscription ($5/month)
+- x402 payments ($0.005/call USDC on Base/Solana)
 
 ## Key Features
 
-- **1,000+ Tracked Wallets**: Access to verified smart money traders from Fomo
+- **Tracked Smart Money Wallets**: Access to verified smart money traders
 - **Real-time Activity**: Sub-minute latency on trade detection
 - **Multi-chain Support**: Solana and Base networks
 - **Efficient Polling**: Free polling endpoint + paid enrichment pattern
@@ -75,8 +75,8 @@ npx skills add cope-capital/cope-api-skills
 
 ## Support
 
-- **Documentation**: https://cope.capital
-- **API Reference**: https://api.cope.capital/docs
+- **Documentation**: https://cope.capital/docs
+- **API Reference**: https://cope.capital/docs
 - **Issues**: Open an issue in this repository
 
 ## License

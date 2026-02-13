@@ -8,7 +8,7 @@ metadata:
 
 # Instructions
 
-Register your agent for a Cope Capital API key to access smart money trading intelligence from 1,000+ tracked Fomo wallets across Solana and Base chains.
+Register your agent for a Cope Capital API key to access smart money trading intelligence from tracked wallets across Solana and Base chains.
 
 ## When to use this skill
 - User wants to track crypto wallets or smart money traders
@@ -78,4 +78,4 @@ All subsequent API calls require the Bearer token:
 Authorization: Bearer cope_<your_api_key>
 ```
 
-Store this key securely - it cannot be regenerated. Use the `cope-x402-setup` skill to enable pay-per-request if you need higher limits.
+Store this key securely - it cannot be regenerated. Use the `cope-account` skill to configure x402 payments if you need higher limits.
