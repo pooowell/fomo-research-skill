@@ -1,35 +1,58 @@
-# Fomo Research Skill
+# fomo-research
 
-Give your OpenClaw agent access to Fomo smart money data. Leaderboards, live trades, watchlists — powered by [fomo.family](https://fomo.family) social graph, built by [cope.capital](https://cope.capital).
+Smart money research skill for [Claude Code](https://code.claude.com) and [OpenClaw](https://openclaw.ai). Track top traders, monitor live trades, build watchlists — all powered by [fomo.family](https://fomo.family).
 
-## Installation
+## What it does
+
+Gives your AI agent access to Fomo's smart money social graph through a simple REST API. Leaderboards, live trades, watchlists, and Fomo profile sync.
+
+- Leaderboard of top traders by real PnL (always free)
+- Live trade monitoring on Solana + Base
+- Watchlists by Fomo handle — we resolve wallet addresses automatically
+- Fomo profile sync — pull your follows, start tracking them
+- Free polling endpoint for efficient heartbeat patterns
+- x402 USDC payments for unlimited access
+
+## Install
+
+### Claude Code
 
 ```bash
-npx skills add cope-capital/fomo-research
+cd .claude/skills
+git clone https://github.com/pooowell/fomo-research-skill.git fomo-research
 ```
 
-Or read the skill directly:
+### OpenClaw
+
+```bash
+cd skills
+git clone https://github.com/pooowell/fomo-research-skill.git fomo-research
 ```
-curl -s https://cope.capital/skill.md
+
+## Setup
+
+1. Register for an API key (free, no signup):
+
+```bash
+curl -X POST https://api.cope.capital/v1/register \
+  -H "Content-Type: application/json" \
+  -d '{"agent_name": "my-agent"}'
 ```
 
-## What's Included
+2. Save the `cope_` key from the response.
 
-7 agent skills for the Cope Capital API:
+3. Start using endpoints. Everything except `/v1/activity` is free.
 
-| Skill | Description |
-|-------|-------------|
-| **cope-register** | Register for an API key |
-| **cope-watchlists** | Create and manage watchlists of Fomo handles |
-| **cope-activity** | Get live trading activity from tracked wallets |
-| **cope-leaderboard** | Top traders ranked by PnL (always free) |
-| **cope-fomo-sync** | Sync your Fomo profile and follows |
-| **cope-x402-setup** | Enable x402 USDC payments for unlimited access |
-| **cope-account** | Manage your account, usage, and API key |
+## Pricing
+
+- **Free**: 250 activity calls/day, leaderboard/watchlists/polling unlimited
+- **x402**: $0.005/call USDC (Base or Solana) after free tier
+- Fomo powers the social graph and leaderboard — we only charge for live transaction monitoring
 
 ## Links
 
-- **API**: https://api.cope.capital
-- **Docs**: https://cope.capital/docs
-- **Interactive API docs**: https://api.cope.capital/docs
+- **API docs**: https://api.cope.capital/docs
+- **Human docs**: https://cope.capital/docs
+- **Skill file**: https://cope.capital/skill.md
+- **Fomo**: https://fomo.family
 - **X**: https://x.com/copedotcapital
