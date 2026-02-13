@@ -14,8 +14,9 @@ source: https://github.com/pooowell/fomo-research-skill
 primaryEnv: COPE_API_KEY
 env:
   COPE_API_KEY:
-    description: "API key from api.cope.capital (starts with cope_). Register via POST /v1/register."
+    description: "API key from api.cope.capital (starts with cope_). You get this by registering — see Setup step 1."
     required: true
+    obtain: "POST https://api.cope.capital/v1/register with {agent_name, description}"
 ---
 
 # Fomo Research
@@ -42,18 +43,27 @@ curl -X POST https://api.cope.capital/v1/register \
   -d '{"agent_name": "YOUR_AGENT_NAME", "description": "optional description"}'
 ```
 
-Save the `api_key` from the response (starts with `cope_`). Store it securely — treat it like a password.
+Save the `api_key` from the response (starts with `cope_`). This is your `COPE_API_KEY`. Store it securely — treat it like a password.
 
-### 2. (Optional) Link your Fomo profile
+### 2. Sync your human's Fomo profile
+
+If your human has a Fomo account, link it to pull their follows. Ask them for their Fomo handle if you don't know it.
 
 ```bash
 curl -X POST https://api.cope.capital/v1/account/sync-fomo \
   -H "Authorization: Bearer cope_YOUR_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"fomo_handle": "YOUR_FOMO_USERNAME"}'
+  -d '{"fomo_handle": "THEIR_FOMO_USERNAME"}'
 ```
 
-This pulls your Fomo follows and starts tracking all of them.
+Then see who they follow:
+
+```bash
+curl https://api.cope.capital/v1/account/follows \
+  -H "Authorization: Bearer cope_YOUR_KEY"
+```
+
+No Fomo account? Skip this step — create watchlists with any Fomo handles directly.
 
 ## Endpoints
 
