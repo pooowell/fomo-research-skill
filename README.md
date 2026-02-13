@@ -5,80 +5,31 @@ Give your OpenClaw agent access to Fomo smart money data. Leaderboards, live tra
 ## Installation
 
 ```bash
-npx skills add cope-capital/cope-api-skills
+npx skills add cope-capital/fomo-research
 ```
 
-## Available Skills
+Or read the skill directly:
+```
+curl -s https://cope.capital/skill.md
+```
 
-| Skill | Description | Use Case |
-|-------|-------------|----------|
-| **cope-register** | Register for API key and get started | First-time setup, onboarding |
-| **cope-watchlists** | Manage wallet watchlists by Fomo handle | Organize tracking, add/remove traders |
-| **cope-activity** | Monitor real-time trading activity | Trading alerts, bot triggers |
-| **cope-leaderboard** | Get top performing wallets by PnL | Discover profitable traders |
-| **cope-fomo-sync** | Link Fomo profile and auto-track follows | Bulk import, streamlined setup |
-| **cope-x402-setup** | Enable USDC payments for unlimited access | Scale beyond free limits |
-| **cope-account** | Manage account settings and view usage stats | Account management, usage tracking |
+## What's Included
 
-## Quick Start
+7 agent skills for the Cope Capital API:
 
-1. **Register** for an API key:
-   ```bash
-   # Use the cope-register skill
-   curl -X POST https://api.cope.capital/v1/register \
-     -H "Content-Type: application/json" \
-     -d '{"agent_name": "my-bot", "platform": "openclaw"}'
-   ```
+| Skill | Description |
+|-------|-------------|
+| **cope-register** | Register for an API key |
+| **cope-watchlists** | Create and manage watchlists of Fomo handles |
+| **cope-activity** | Get live trading activity from tracked wallets |
+| **cope-leaderboard** | Top traders ranked by PnL (always free) |
+| **cope-fomo-sync** | Sync your Fomo profile and follows |
+| **cope-x402-setup** | Enable x402 USDC payments for unlimited access |
+| **cope-account** | Manage your account, usage, and API key |
 
-2. **Sync your Fomo follows** (optional but recommended):
-   ```bash
-   # Use the cope-fomo-sync skill  
-   curl -X POST https://api.cope.capital/v1/account/sync-fomo \
-     -H "Authorization: Bearer cope_<your_key>" \
-     -d '{"fomo_handle": "your_handle"}'
-   ```
+## Links
 
-3. **Create a watchlist**:
-   ```bash
-   # Use the cope-watchlists skill
-   curl -X POST https://api.cope.capital/v1/watchlists \
-     -H "Authorization: Bearer cope_<your_key>" \
-     -d '{"name": "Smart Money", "handles": ["icemandot", "frankdegods"]}'
-   ```
-
-4. **Monitor for activity**:
-   ```bash
-   # Use the cope-activity skill
-   curl "https://api.cope.capital/v1/activity/poll" \
-     -H "Authorization: Bearer cope_<your_key>"
-   ```
-
-## API Overview
-
-**Base URL**: `https://api.cope.capital`
-
-**Authentication**: All endpoints require `Authorization: Bearer cope_<api_key>`
-
-**Free Tier**: 250 API calls per day, 1 watchlist, 10 handles per watchlist
-
-**Upgrade Options**: 
-- x402 payments ($0.005/call USDC on Base/Solana)
-
-## Key Features
-
-- **Tracked Smart Money Wallets**: Access to verified smart money traders
-- **Real-time Activity**: Sub-minute latency on trade detection
-- **Multi-chain Support**: Solana and Base networks
-- **Efficient Polling**: Free polling endpoint + paid enrichment pattern
-- **Auto-resolution**: Fomo handles automatically resolved to wallet addresses
-- **Pay-per-use**: x402 micropayments for unlimited access
-
-## Support
-
-- **Documentation**: https://cope.capital/docs
-- **API Reference**: https://cope.capital/docs
-- **Issues**: Open an issue in this repository
-
-## License
-
-Proprietary - See https://cope.capital/terms
+- **API**: https://api.cope.capital
+- **Docs**: https://cope.capital/docs
+- **Interactive API docs**: https://api.cope.capital/docs
+- **X**: https://x.com/copedotcapital
