@@ -1,6 +1,6 @@
-# Cope Capital API Skills
+# Fomo Research Skill
 
-Agent Skills package for the Cope Capital API — programmatic access to smart money intelligence from tracked wallets across Solana and Base chains. Build custom watchlists, poll real-time trading activity, and access wallet performance leaderboards.
+Give your OpenClaw agent access to Fomo smart money data. Leaderboards, live trades, watchlists — powered by [fomo.family](https://fomo.family) social graph, built by [cope.capital](https://cope.capital).
 
 ## Installation
 
