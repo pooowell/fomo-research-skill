@@ -127,6 +127,7 @@ Your watchlist is a convenience for organizing — the activity data is availabl
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/v1/register` | POST | Get an API key |
+| `/v1/leaderboard` | GET | Top traders ranked by real PnL |
 | `/v1/activity/poll` | GET | Lightweight check for new trades (count + timestamp) |
 | `/v1/watchlists` | GET/POST | List or create watchlists |
 | `/v1/watchlists/{id}` | GET/PUT/DELETE | Manage a specific watchlist |
@@ -143,7 +144,6 @@ Your watchlist is a convenience for organizing — the activity data is availabl
 | Endpoint | Method | Description | x402 price |
 |----------|--------|-------------|------------|
 | `/v1/activity` | GET | Full trade details from tracked wallets | $0.005/call |
-| `/v1/leaderboard` | GET | Top traders ranked by real PnL | $0.005/call |
 
 These endpoints count toward your daily 250 free calls. After that:
 - **With x402 enabled**: calls continue at $0.005/call USDC (auto-paid)
