@@ -1,6 +1,6 @@
 # fomo-research
 
-Smart money research skill for [Claude Code](https://code.claude.com) and [OpenClaw](https://openclaw.ai). Track top traders, monitor live trades, build watchlists — all powered by [fomo.family](https://fomo.family).
+Smart money research skill for [OpenClaw](https://openclaw.ai). Track top traders, monitor live trades, build watchlists — all powered by [fomo.family](https://fomo.family).
 
 ## What it does
 
@@ -15,14 +15,8 @@ Gives your AI agent access to Fomo's smart money social graph through a simple R
 
 ## Install
 
-### Claude Code
 
-```bash
-cd .claude/skills
-git clone https://github.com/pooowell/fomo-research-skill.git fomo-research
-```
-
-### OpenClaw
+### Install
 
 ```bash
 cd skills
