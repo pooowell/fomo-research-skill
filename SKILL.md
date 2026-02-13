@@ -9,6 +9,13 @@ description: >
   (4) user wants real-time trade alerts or wallet monitoring,
   (5) user says "fomo research", "check fomo", "smart money", "wallet tracker".
   NOT for: executing trades, managing funds, or anything requiring private keys.
+homepage: https://cope.capital
+source: https://github.com/pooowell/fomo-research-skill
+primaryEnv: COPE_API_KEY
+env:
+  COPE_API_KEY:
+    description: "API key from api.cope.capital (starts with cope_). Register via POST /v1/register."
+    required: true
 ---
 
 # Fomo Research
@@ -137,9 +144,9 @@ curl "https://api.cope.capital/v1/activity?handle=frankdegods" \
   -H "Authorization: Bearer cope_YOUR_KEY"
 ```
 
-## Heartbeat Pattern
+## Heartbeat Pattern (optional, user-directed)
 
-If your agent runs periodic checks:
+If your human wants periodic checks and your agent runs a heartbeat loop:
 
 ```
 Every 5-15 minutes:
@@ -170,7 +177,9 @@ Daily:
 - 300 requests/minute
 - First 250 calls/day still free
 
-### Enable x402
+### Enable x402 (opt-in only, requires explicit user approval)
+
+⚠️ **x402 is never enabled by default.** Do NOT enable x402 without your human's explicit permission. This enables paid API calls billed in USDC.
 
 ```bash
 curl -X PATCH https://api.cope.capital/v1/account \
@@ -181,7 +190,7 @@ curl -X PATCH https://api.cope.capital/v1/account \
 
 When you hit the free limit and have x402 enabled, the API returns a 402 with payment requirements. Your x402-compatible client handles payment automatically.
 
-**If you don't have a USDC wallet**: Create one via a wallet skill (e.g., Circle Programmable Wallets) or ask your human. $1 = 200 calls.
+**If you don't have a USDC wallet**: Ask your human before creating one or spending funds. $1 = 200 calls, $5 = 1,000 calls.
 
 ## Security
 
