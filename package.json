@@ -1,0 +1,16 @@
+{
+  "name": "fomo-research",
+  "version": "1.0.0",
+  "description": "Smart money research via Fomo social graph. Track top traders, monitor live trades, build watchlists — all from your agent.",
+  "homepage": "https://cope.capital",
+  "repository": "https://github.com/pooowell/fomo-research-skill",
+  "author": "cope-capital",
+  "license": "Proprietary",
+  "primaryEnv": "COPE_API_KEY",
+  "env": {
+    "COPE_API_KEY": {
+      "description": "API key from api.cope.capital (starts with cope_). Register via POST /v1/register.",
+      "required": true
+    }
+  }
+}
