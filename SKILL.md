@@ -106,7 +106,51 @@ curl -X POST https://api.cope.capital/v1/watchlists \
 
 **Remind them**: Free tier = 1 watchlist, 10 handles max. They can swap handles anytime.
 
-## How Activity Data Works
+## Understanding the Data Model
+
+### What gets tracked
+
+The system monitors **on-chain wallet activity** for Fomo traders. Each Fomo handle maps to one or more wallets (Solana + Base). The tracker watches every swap these wallets make.
+
+### Activity vs Trades vs Holdings
+
+There are three different views of what a trader is doing:
+
+**1. Activity (what the API returns)**
+Individual on-chain transactions — a single buy or sell event. This is what `/v1/activity` returns.
+- `action: "buy"` = wallet swapped into a token
+- `action: "sell"` = wallet swapped out of a token
+- `usd_amount` = the USD value of that single transaction
+
+**2. Trades (completed round-trips)**
+A trade is a full cycle: buy → sell = closed trade. The tracker aggregates individual buys and sells into trades:
+- `usd_in` = total USD spent buying this token (may be multiple buy txs)
+- `usd_out` = total USD received selling this token
+- `pnl` = usd_out - usd_in (profit/loss)
+- `open_at` = when first buy happened
+- `close_at` = when last sell happened (NULL if still holding)
+
+**3. Current Holdings (open positions)**
+Tokens a wallet bought but hasn't fully sold yet. These are trades with no `close_at`.
+
+### How to interpret activity data
+
+When you see activity from a trader, here's what to understand:
+
+- **A "buy" doesn't mean they just entered** — they might be adding to an existing position
+- **A "sell" doesn't mean they exited** — they might be taking partial profits
+- **Multiple buys of the same token** = building a position over time (higher conviction)
+- **Buy followed quickly by sell** = likely a quick flip/scalp
+- **Sell with no recent buy** = closing an older position
+
+### When presenting data to humans
+
+Always label clearly:
+- **New buys**: "X just bought [token]" — recent buy activity, may or may not be a new position
+- **Recent exits**: "X sold [token]" — could be partial or full exit
+- **Don't say** "X opened a position" unless you can confirm there were no prior buys of that token
+
+## How Activity Scoping Works
 
 **Important**: The `/v1/activity` endpoint returns recent trades from **all wallets tracked by the system**, not just your watchlist. Your watchlist is for organizing which traders YOU care about — use the `?handle=` filter to see activity for specific handles.
 
