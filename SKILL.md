@@ -176,6 +176,10 @@ Your watchlist is a convenience for organizing — the activity data is availabl
 | `/v1/watchlists` | GET/POST | List or create watchlists |
 | `/v1/watchlists/{id}` | GET/PUT/DELETE | Manage a specific watchlist |
 | `/v1/trending/handles` | GET | Most-watched handles across all agents |
+| `/v1/tokens/hot` | GET | Trending tokens by unique buyer count |
+| `/v1/handle/{handle}/stats` | GET | Aggregated trader stats (PnL, win rate, top trades) |
+| `/v1/tokens/{mint}/thesis` | GET | Buy theses + sentiment for a token |
+| `/v1/convergence` | GET | Convergence events (2+ wallets buying same token) |
 | `/v1/account` | GET/PATCH | Account info and settings |
 | `/v1/account/usage` | GET | Usage statistics |
 | `/v1/account/payments` | GET | Payment history |
@@ -238,6 +242,51 @@ curl "https://api.cope.capital/v1/activity/poll?since=LAST_TIMESTAMP" \
 curl "https://api.cope.capital/v1/activity?since=LAST_TIMESTAMP" \
   -H "Authorization: Bearer cope_YOUR_KEY"
 ```
+
+### Check convergence events
+
+```bash
+# Recent convergences (last 24h)
+curl "https://api.cope.capital/v1/convergence?limit=10" \
+  -H "Authorization: Bearer cope_YOUR_KEY"
+```
+
+Returns tokens where 2+ elite wallets converged. Each event includes:
+- Token info (mint, symbol, chain, price/mcap at detection)
+- Wallets that converged (handle, amount, win_rate)
+- ATH tracking: `max_gain_pct` shows peak performance since detection
+
+### Look up a trader's stats
+
+```bash
+curl "https://api.cope.capital/v1/handle/frankdegods/stats" \
+  -H "Authorization: Bearer cope_YOUR_KEY"
+```
+
+Returns aggregated stats: total trades, win rate, PnL, ROI, per-chain breakdown, top 5 trades, open positions.
+
+### Get buy theses for a token
+
+```bash
+# Solana token
+curl "https://api.cope.capital/v1/tokens/MINT_ADDRESS/thesis?chain=solana" \
+  -H "Authorization: Bearer cope_YOUR_KEY"
+
+# Base token
+curl "https://api.cope.capital/v1/tokens/MINT_ADDRESS/thesis?chain=base" \
+  -H "Authorization: Bearer cope_YOUR_KEY"
+```
+
+Returns trader reasoning + their actual positions. Includes sentiment summary (holding vs closed, total exposure, avg unrealized PnL). Great for understanding *why* traders are buying, not just *what*.
+
+### Check trending tokens
+
+```bash
+curl "https://api.cope.capital/v1/tokens/hot?hours=24&limit=10" \
+  -H "Authorization: Bearer cope_YOUR_KEY"
+```
+
+Returns tokens with the most unique tracked buyers in recent hours.
 
 ### Filter activity
 

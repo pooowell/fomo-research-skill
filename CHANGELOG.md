@@ -1,6 +1,15 @@
 # Changelog — fomo-research skill
 
-## [Unreleased]
+## [0.2.0] - 2026-02-18
+### Added
+- **Convergence events** (`GET /v1/convergence`) — real-time detection when 2+ elite wallets buy the same token, with ATH tracking
+- **Trader stats** (`GET /v1/handle/:handle/stats`) — aggregated PnL, win rate, ROI, per-chain breakdown, top trades
+- **Token thesis** (`GET /v1/tokens/:mint/thesis`) — buy theses from Fomo traders with position data and sentiment summary
+- **Hot tokens** (`GET /v1/tokens/hot`) — trending tokens by unique buyer count
+- New workflow examples: convergence checking, trader lookup, thesis queries, hot token scanning
+- Updated API reference with full response schemas for all new endpoints
+
+## [0.1.1] - 2026-02-14
 ### Added
 - Data model documentation: Activity vs Trades vs Holdings explained
 - Guidance on interpreting buy/sell signals and presenting data to humans
